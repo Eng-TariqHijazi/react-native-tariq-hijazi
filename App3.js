@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState ,Component } from "react";
+import React, { useState } from "react";
 import {
   View,
   Image,
@@ -9,7 +9,6 @@ import {
   SafeAreaView,
   StyleSheet,
   Alert,
-  ScrollView,
   Modal,
   Pressable,
   useWindowDimensions,
@@ -58,24 +57,24 @@ const DATA = [
   },
   {
     id: "11",
-    title: "Second Item",
+    title: "11 Item",
   },
   {
     id: "12",
-    title: "Third Item",
+    title: " 12 Item",
   },
 ];
 
 export default function App() {
-  
   const Hed = () => {
     return (
-      <View style={{ }}>
+      <View>
         <View
           style={{
             marginTop: 50,
             flexDirection: "row",
-            justifyContent: "space-between",alignItems: "center",
+            justifyContent: "space-between",
+            alignItems: "center",
           }}
         >
           <View style={{ flexDirection: "row" }}>
@@ -163,16 +162,15 @@ export default function App() {
             />
           </View>
         </View>
-        </View>
-      
+      </View>
     );
   };
-  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(true);
   const { width, height } = useWindowDimensions();
   const Item = ({ title }) => (
-    <View style={{}}>
+    <View>
       <Modal
-        animationType="slide"
+        animationType="none"
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
@@ -182,18 +180,37 @@ export default function App() {
       >
         <View
           style={{
-            backgroundColor: "#555",
-            textAlign: "center",
+            backgroundColor: "#CCD5E3",
+            justifyContent: "center",
+            alignItems: "center",
             width: width * 0.8,
-            top: 350,
+            top: height * 0.2,
+            height: height * 0.5,
+            left: width * 0.1,
           }}
         >
           <Text
-            onPress={() => setModalVisible(!modalVisible)}
-            style={{ fontSize: 26, fontWeight: "400" }}
+            style={{ fontSize: 26, fontWeight: "400", textAlign: "center" }}
           >
-            Hello Tariq
+            Hello World!{" \n"} Welcome{" \n"}
           </Text>
+          <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
+            <Text
+              style={{
+                fontSize: 26,
+                fontWeight: "400",
+                textAlign: "center",
+                borderWidth: 2,
+                borderColor: "#F0F0F0",
+                width: width * 0.4,
+                borderRadius: 15,
+                paddingVertical: 10,
+                backgroundColor: "#3C67AF",
+              }}
+            >
+              Close Tab
+            </Text>
+          </TouchableOpacity>
         </View>
       </Modal>
       <Pressable
@@ -221,31 +238,26 @@ export default function App() {
   );
   const renderItem = ({ item }) => <Item title={item.title} />;
   return (
-    
     // <ScrollView >
     <View
       style={{
-        
-        height: height ,
+        height: height,
         alignItems: "center",
         flexDirection: "column",
         justifyContent: "flex-start",
-        // width:width*0.8
       }}
-    >     
-
-    <View style={{
-        
-        height: height*1 ,
-        alignItems: "center",
-        flexDirection: "column",
-        justifyContent: "flex-end",
-        // width:width*0.8
-      }}>
-       <StatusBar style="auto" />
-      {/* <StatusBar style="auto" /> */}
-      {/* //Start header */}
-      {/* <View
+    >
+      <View
+        style={{
+          height: height * 1,
+          alignItems: "center",
+          flexDirection: "column",
+          justifyContent: "flex-end",
+        }}
+      >
+        <StatusBar style="auto" />
+        {/* //Start header */}
+        {/* <View
         style={{
           width: width * 0.9,
           marginTop: 50,
@@ -337,80 +349,76 @@ export default function App() {
           />
         </View>
       </View> */}
-      {/* //End header */}
+        {/* //End header */}
 
-      {/* //Start list */}
+        {/* //Start list */}
 
-      <SafeAreaView style={[styles.container,{width:width*0.9,height:height*0.88,}]}>
-        <FlatList
-        // scrollEnabled={(_onMomentumScrollEnd)=>{true}}
-          // onTouchMove={}
-          // onMomentumScrollEnd={scroll={false}}
-          ListHeaderComponent={<Hed />}
+        <SafeAreaView
+          style={[
+            styles.container,
+            { width: width * 0.9, height: height * 0.88 },
+          ]}
+        >
+          <FlatList
+            ListHeaderComponent={<Hed />}
+            data={DATA}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+          />
+        </SafeAreaView>
+        {/* //End list */}
 
-          data={DATA}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
-      </SafeAreaView>
-      {/* //End list */}
+        {/* //Start Footer */}
 
-      {/* //Start Footer */}
-      
-      <View
-        style={{
-          bottom:-20,
-          flexDirection: "row",
-          backgroundColor: "#161616",
-          width,
-          justifyContent:'space-between'
-        }}
-      >
-        <Image
+        <View
           style={{
-            width: 35,
-            height: 35,
-            marginHorizontal: width*0.09,
-            marginVertical: 27,
+            bottom: -20,
+            flexDirection: "row",
+            backgroundColor: "#161616",
+            width,
+            justifyContent: "space-between",
           }}
-          source={require("./assets/house-black-silhouette-without-door.png")}
-        />
-        <Image
-          style={{
-            width: 35,
-            height: 35,
-            marginHorizontal: width*0.09,
-            marginVertical: 27,
-          }}
-          source={require("./assets/chat.png")}
-        />
-        <Image
-          style={{
-            width: 25,
-            borderRadius: 25,
-            height: 35,
-            marginHorizontal: width*0.09,
-
-            marginVertical: 27,
-            backgroundColor: "#555",
-          }}
-          source={require("./assets/doc.png")}
-        />
-        <Image
-          style={{
-            width: 35,
-            height: 35,
-            marginHorizontal: width*0.09,
-
-            marginVertical: 27,
-          }}
-          source={require("./assets/login.png")}
-        />
+        >
+          <Image
+            style={{
+              width: 35,
+              height: 35,
+              marginHorizontal: width * 0.09,
+              marginVertical: 27,
+            }}
+            source={require("./assets/house-black-silhouette-without-door.png")}
+          />
+          <Image
+            style={{
+              width: 35,
+              height: 35,
+              marginHorizontal: width * 0.09,
+              marginVertical: 27,
+            }}
+            source={require("./assets/chat.png")}
+          />
+          <Image
+            style={{
+              width: 35,
+              height: 35,
+              marginHorizontal: width * 0.09,
+              marginVertical: 27,
+            }}
+            source={require("./assets/doccc.png")}
+          />
+          <Image
+            style={{
+              width: 35,
+              height: 35,
+              marginHorizontal: width * 0.09,
+              marginVertical: 27,
+            }}
+            source={require("./assets/login.png")}
+          />
+        </View>
+        {/* //End Footer */}
       </View>
-      {/* //End Footer */}
     </View>
-    </View>
-     
   );
 }
 
@@ -430,6 +438,5 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     marginLeft: 10,
-    // flex: 7.4,
   },
 });
