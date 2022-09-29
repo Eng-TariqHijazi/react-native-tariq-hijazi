@@ -71,19 +71,13 @@ export default function App() {
           width: width * 0.9,
         }}
       >
-        <TouchableOpacity
-         style={[styles.touch,{width: width * 0.28,}]}
-        >
+        <TouchableOpacity style={[styles.touch, { width: width * 0.28 }]}>
           <Text style={{ textAlign: "center", color: "#3C67AF" }}>Open</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-         style={[styles.touch,{width: width * 0.28,}]}
-        >
+        <TouchableOpacity style={[styles.touch, { width: width * 0.28 }]}>
           <Text style={{ textAlign: "center", color: "#3C67AF" }}>Edit</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-           style={[styles.touch,{width: width * 0.28,}]}
-        >
+        <TouchableOpacity style={[styles.touch, { width: width * 0.28 }]}>
           <Text style={{ textAlign: "center", color: "#3C67AF" }}>
             Download
           </Text>
@@ -95,13 +89,12 @@ export default function App() {
   const Item = ({ title }) => (
     <View
       style={{
-        
         paddingVertical: 20,
         borderBottomColor: "#40404020",
         borderBottomWidth: 1,
       }}
     >
-      <Text style={{ fontSize: 20, fontWeight: "600" ,}}>{title}</Text>
+      <Text style={{ fontSize: 20, fontWeight: "600" }}>{title}</Text>
       <View>
         <Text style={{ fontSize: 18, paddingVertical: 18 }}>Conclusion</Text>
         <Butt />
@@ -122,7 +115,6 @@ export default function App() {
   );
   const renderItem = ({ item }) => <Item title={item.title} />;
   return (
-    
     <View
       style={{ flexDirection: "column", alignItems: "center", width, height }}
     >
@@ -243,15 +235,12 @@ export default function App() {
 }
 const styles = StyleSheet.create({
   container: {
-    top: 15,alignItems:'center'
+    top: 15,
+    alignItems: "center",
   },
-  touch:{
-    
-      
-      backgroundColor: "#F0F0F0",
-      borderRadius: 20,
-      paddingVertical: 15,
-      
-    
-  }
+  touch: {
+    backgroundColor: "#F0F0F0",
+    borderRadius: 20,
+    paddingVertical: 15,
+  },
 });
