@@ -122,7 +122,7 @@ export default function App() {
   );
   const renderItem = ({ item }) => <Item title={item.title} />;
   return (
-    
+     
     <View
       style={{ flexDirection: "column", alignItems: "center", width, height }}
     >
