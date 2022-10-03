@@ -1,51 +1,3 @@
-// import { StatusBar } from "expo-status-bar";
-// import { Alert, Image, StyleSheet, Text, View } from "react-native";
-
-// const Compo = ({title}) =>(
-//   <Text style={{fontSize:40}}>{title}</Text>
-// );
-
-// export default function App() {
-//   return (
-//     <View style={{ justifyContent: "center", alignItems: "center" }}>
-
-//       <View style={{flexDirection: "row",marginTop:70,borderColor:"#F0F0F0",borderRadius:15,borderWidth:1,backgroundColor:"#F0F0F0"}}>
-//       <View style={{width:180 ,borderWidth:15,borderColor:"#3C67AF",borderRadius:15,backgroundColor:"#3C67AF"}}>
-//         <Button title="Next"  color="#3C67AF"  />
-//       </View>
-//       <View style={{width:180,zIndex:1,borderWidth:15,borderColor:"#F0F0F0",borderRadius:1}}>
-//         <Button title="Skip"  color="#F0F0F0" backgroundColor="#F0F0F0"   />
-//       </View>
-//       </View>
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   new: {
-//     width: 204.99,
-//     height: 135.59,
-//   },
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import { StatusBar } from "expo-status-bar";
 import {
   Button,
@@ -55,17 +7,9 @@ import {
   Text,
   View,
 } from "react-native";
-
-// const Compo = ({title}) =>(
-//   <Text style={{fontSize:40}}>{title}</Text>
-// );
-
 export default function App() {
   return (
     <View style={{ justifyContent: "center", alignItems: "center" }}>
-      {/* <Image source={require('./assets/favicon.png')}/>
-      <Text>Open up App.js to start working on your app!</Text>
-      <Compo title ="Hello "/> */}
       <StatusBar style="auto" />
       <View
         style={{
@@ -185,14 +129,6 @@ export default function App() {
           Next
         </Text>
       </View>
-      {/* <View style={{flexDirection: "row",marginTop:70,borderColor:"#F0F0F0",borderRadius:15,borderWidth:1,backgroundColor:"#F0F0F0"}}>
-      <View style={{width:180 ,borderWidth:15,borderColor:"#3C67AF",borderRadius:15,backgroundColor:"#3C67AF"}}>
-        <Button title="Next"  color="#3C67AF"  />
-      </View>
-      <View style={{width:180,zIndex:1,borderWidth:15,borderColor:"#F0F0F0",borderRadius:1}}>
-        <Button title="Skip"  color="#F0F0F0" backgroundColor="#F0F0F0"   />
-      </View>
-      </View> */}
     </View>
   );
 }

@@ -1,192 +1,372 @@
 import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
 import {
   View,
-  FlatList,
-  Text,
-  useWindowDimensions,
-  TextInput,
   Image,
+  Text,
+  TouchableOpacity,
+  FlatList,
   SafeAreaView,
   StyleSheet,
-  TouchableOpacity,
+  Alert,
+  Modal,
+  Pressable,
+  useWindowDimensions,
 } from "react-native";
+
 const DATA = [
   {
     id: "1",
-    title: "Consultation 05/11/2021",
+    title: "First Item",
   },
   {
     id: "2",
-    title: "Consultation 06/11/2021",
+    title: "Second Item",
   },
   {
     id: "3",
-    title: "Consultation 07/11/2021",
+    title: "Third Item",
   },
   {
     id: "4",
-    title: "Consultation 08/11/2021",
+    title: "Fourth Item",
   },
   {
     id: "5",
-    title: "Consultation 09/11/2021",
+    title: "five Item",
   },
   {
     id: "6",
-    title: "Consultation 05/2/2021",
+    title: "sex Item",
   },
   {
     id: "7",
-    title: "Consultation 05/3/2021",
+    title: "seven Item",
   },
   {
     id: "8",
-    title: "Consultation 05/5/2021",
+    title: "eight Item",
   },
   {
     id: "9",
-    title: "Consultation 04/11/2022",
+    title: "nine Item",
   },
   {
     id: "10",
-    title: "Consultation 05/12/2021",
+    title: "ten Item",
   },
   {
     id: "11",
-    title: "Consultation 05/11/2021",
+    title: "11 Item",
   },
   {
     id: "12",
-    title: "Third Item",
+    title: " 12 Item",
   },
-];
+]
 
 export default function App() {
-  const Butt = () => {
+  const Hed = () => {
     return (
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          width: width * 0.9,
-        }}
-      >
-        <TouchableOpacity
-         style={[styles.touch,{width: width * 0.28,}]}
+      <View>
+        <View
+          style={{
+            marginTop: 50,
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
         >
-          <Text style={{ textAlign: "center", color: "#3C67AF" }}>Open</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-         style={[styles.touch,{width: width * 0.28,}]}
+          <View style={{ flexDirection: "row" }}>
+            <Image
+              style={{ width: 50, height: 50, borderRadius: 100 }}
+              source={require("./assets/1.jpeg")}
+            />
+            <Text
+              style={{
+                fontSize: 26,
+                fontWeight: "400",
+                marginLeft: 20,
+                marginTop: 4,
+              }}
+            >
+              Hi ,Tariq !
+            </Text>
+          </View>
+          <Image
+            style={{ width: 25, height: 25, marginTop: 10 }}
+            source={require("./assets/bell.png")}
+          />
+        </View>
+        <View
+          style={{
+            borderRadius: 12,
+            marginTop: 40,
+            backgroundColor: "#F0F0F0",
+            alignItems: "center",
+          }}
         >
-          <Text style={{ textAlign: "center", color: "#3C67AF" }}>Edit</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-           style={[styles.touch,{width: width * 0.28,}]}
-        >
-          <Text style={{ textAlign: "center", color: "#3C67AF" }}>
-            Download
+          <Text
+            style={{
+              fontSize: 22,
+              fontWeight: "500",
+              marginTop: 4,
+              textAlign: "center",
+            }}
+          >
+            Let's start
           </Text>
-        </TouchableOpacity>
+          <Text
+            style={{
+              fontSize: 26,
+              fontWeight: "500",
+              textAlign: "center",
+            }}
+          >
+            CONSULTATION
+          </Text>
+          <TouchableOpacity
+            style={{
+              width: 170,
+              backgroundColor: "#3C67AF",
+              borderColor: "#3C67AE",
+              borderWidth: 1,
+              borderRadius: 15,
+              padding: 12,
+              marginVertical: 20,
+            }}
+          >
+            <Text style={{ textAlign: "center", fontSize: 18, color: "#FFF" }}>
+              Start
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <View
+          style={{
+            height: height * 0.08,
+            width: width * 0.9,
+            marginVertical: 30,
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Text style={{ fontSize: 26, fontWeight: "400" }}>
+            Last Documents
+          </Text>
+          <View style={{ flexDirection: "row", top: 2 }}>
+            <Text style={{ fontSize: 18 }}>View all</Text>
+            <Image
+              style={{ width: 20, height: 20, left: 3, top: 4 }}
+              source={require("./assets/arow.png")}
+            />
+          </View>
+        </View>
       </View>
     );
   };
+  const [modalVisible, setModalVisible] = useState(false);
   const { width, height } = useWindowDimensions();
   const Item = ({ title }) => (
-    <View
-      style={{
-        
-        paddingVertical: 20,
-        borderBottomColor: "#40404020",
-        borderBottomWidth: 1,
-      }}
-    >
-      <Text style={{ fontSize: 20, fontWeight: "600" ,}}>{title}</Text>
-      <View>
-        <Text style={{ fontSize: 18, paddingVertical: 18 }}>Conclusion</Text>
-        <Butt />
-      </View>
-      <View>
-        <Text style={{ fontSize: 18, paddingVertical: 18 }}>
-          Certificate of illness{" "}
-        </Text>
-        <Butt />
-      </View>
-      <View>
-        <Text style={{ fontSize: 18, paddingVertical: 18 }}>
-          Medication prescription{" "}
-        </Text>
-        <Butt />
-      </View>
+    <View>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View
+          style={{
+            backgroundColor: "#CCD5E3",
+            justifyContent: "center",
+            alignItems: "center",
+            width: width * 0.8,
+            top: height * 0.2,
+            height: height * 0.5,
+            left: width * 0.1,
+          }}
+        >
+          <Text
+            style={{ fontSize: 26, fontWeight: "400", textAlign: "center" }}
+          >
+            Hello World!{" \n"} Welcome{" \n"}
+          </Text>
+          <TouchableOpacity onPress={() => setModalVisible((modalVisible)=>!modalVisible)}>
+            <Text
+              style={{
+                fontSize: 26,
+                fontWeight: "400",
+                textAlign: "center",
+                borderWidth: 2,
+                borderColor: "#F0F0F0",
+                width: width * 0.4,
+                borderRadius: 15,
+                paddingVertical: 10,
+                backgroundColor: "#3C67AF",
+              }}
+            >
+              Close Tab
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
+      <Pressable
+        style={[styles.item, { width: width * 0.9 }]}
+        onPress={() => setModalVisible((modalVisible)=>!modalVisible)}
+      >
+        <View style={{ flexDirection: "row" }}>
+          <Image
+            style={{
+              width: 40,
+              height: 40,
+              marginLeft: 8,
+              marginTop: 5,
+            }}
+            source={require("./assets/document.png")}
+          />
+          <Text style={styles.title}>{title}</Text>
+        </View>
+        <Image
+          style={{ width: 30, height: 30, marginTop: 5 }}
+          source={require("./assets/dowload.png")}
+        />
+      </Pressable>
     </View>
   );
   const renderItem = ({ item }) => <Item title={item.title} />;
   return (
-     
+    // <ScrollView >
     <View
-      style={{ flexDirection: "column", alignItems: "center", width, height }}
+      style={{
+        height: height,
+        alignItems: "center",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+      }}
     >
       <View
         style={{
-          width: width,
-          top: 20,
-          borderBottomColor: "#40404020",
-          borderBottomWidth: 1,
+          height: height * 1,
+          alignItems: "center",
+          flexDirection: "column",
+          justifyContent: "flex-end",
         }}
       >
         <StatusBar style="auto" />
-        <View
+        {/* //Start header */}
+        {/* <View
+        style={{
+          width: width * 0.9,
+          marginTop: 50,
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
+        <View style={{ flexDirection: "row" }}>
+          <Image
+            style={{ width: 50, height: 50, borderRadius: 100 }}
+            source={require("./assets/1.jpeg")}
+          />
+          <Text
+            style={{
+              fontSize: 26,
+              fontWeight: "400",
+              marginLeft: 20,
+              marginTop: 4,
+            }}
+          >
+            Hi ,Tariq !
+          </Text>
+        </View>
+        <Image
+          style={{ width: 25, height: 25, marginTop: 10 }}
+          source={require("./assets/bell.png")}
+        />
+      </View>
+      <View
+        style={{
+          borderRadius: 12,
+          marginTop: 40,
+          backgroundColor: "#F0F0F0",
+          width: width * 0.9,
+          alignItems: "center",
+        }}
+      >
+        <Text
           style={{
-            flexDirection: "row",
-            width: width * 0.52,
-            height: height * 0.1,
-            alignItems: "flex-end",
-            justifyContent: "space-between",
-            marginLeft: 40,
-            paddingBottom: 10,
+            fontSize: 22,
+            fontWeight: "500",
+            marginTop: 4,
+            textAlign: "center",
           }}
         >
-          <Text style={{ color: "#007AFF", fontSize: 15 }}>Back</Text>
-          <Text style={{ textAlign: "center", fontSize: 17 }}>Documents</Text>
-        </View>
-      </View>
-      <View>
-        <TextInput
+          Let's start
+        </Text>
+        <Text
           style={{
-            top: 40,
-            width: width * 0.9,
-            paddingVertical: 12,
-            borderRadius: 20,
-            paddingHorizontal: 50,
-            borderColor: "#70707040",
+            fontSize: 26,
+            fontWeight: "500",
+            textAlign: "center",
+          }}
+        >
+          CONSULTATION
+        </Text>
+        <TouchableOpacity
+          style={{
+            width: 170,
+            backgroundColor: "#3C67AF",
+            borderColor: "#3C67AE",
             borderWidth: 1,
+            borderRadius: 15,
+            padding: 12,
+            marginVertical: 20,
           }}
-        ></TextInput>
-        <Image
-          resizeMode="contain"
-          style={{ width: 35, height: 30, left: 10 }}
-          source={require("./assets/bx_search.png")}
-        />
-        <Image
-          resizeMode="contain"
-          style={{
-            width: 35,
-            height: 30,
-            right: 10,
-            top: 50,
-            position: "absolute",
-          }}
-          source={require("./assets/filter.png")}
-        />
+        >
+          <Text style={{ textAlign: "center", fontSize: 18, color: "#FFF" }}>
+            Start
+          </Text>
+        </TouchableOpacity>
       </View>
-      <View>
-        <SafeAreaView style={[styles.container, { height: height * 0.72 }]}>
+      <View
+        style={{
+          // height: height * 0.08,
+          width: width * 0.9,
+          marginVertical: 30,
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 26, fontWeight: "400" }}>Last Documents</Text>
+        <View style={{ flexDirection: "row", top: 2 }}>
+          <Text style={{ fontSize: 18 }}>View all</Text>
+          <Image
+            style={{ width: 20, height: 20, left: 3, top: 4 }}
+            source={require("./assets/arow.png")}
+          />
+        </View>
+      </View> */}
+        {/* //End header */}
+
+        {/* //Start list */}
+
+        <SafeAreaView
+          style={[
+            styles.container,
+            { width: width * 0.9, height: height * 0.88 },
+          ]}
+        >
           <FlatList
+            ListHeaderComponent={<Hed />}
             data={DATA}
             renderItem={renderItem}
             keyExtractor={(item) => item.id}
           />
         </SafeAreaView>
+        {/* //End list */}
 
         {/* //Start Footer */}
 
@@ -203,10 +383,10 @@ export default function App() {
             style={{
               width: 35,
               height: 35,
-              marginHorizontal: width * 0.08,
+              marginHorizontal: width * 0.09,
               marginVertical: 27,
             }}
-            source={require("./assets/homw.png")}
+            source={require("./assets/house-black-silhouette-without-door.png")}
           />
           <Image
             style={{
@@ -224,7 +404,7 @@ export default function App() {
               marginHorizontal: width * 0.09,
               marginVertical: 27,
             }}
-            source={require("./assets/doc-blue.png")}
+            source={require("./assets/doccc.png")}
           />
           <Image
             style={{
@@ -241,17 +421,22 @@ export default function App() {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
-    top: 15,alignItems:'center'
+    // height: '88%',
   },
-  touch:{
-    
-      
-      backgroundColor: "#F0F0F0",
-      borderRadius: 20,
-      paddingVertical: 15,
-      
-    
-  }
+  item: {
+    padding: 10,
+    marginVertical: 10,
+    // marginHorizontal: 12,
+    borderWidth: 2,
+    borderRadius: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  title: {
+    fontSize: 32,
+    marginLeft: 10,
+  },
 });
