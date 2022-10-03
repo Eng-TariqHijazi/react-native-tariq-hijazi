@@ -1,501 +1,167 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
 import {
-  View,
   Image,
   Text,
+  View,
+  ImageBackground,
   TouchableOpacity,
-  FlatList,
-  SafeAreaView,
-  StyleSheet,
-  Alert,
-  Modal,
-  Pressable,
-  useWindowDimensions,
+  TextInput,
+  Keyboard,
+  TouchableWithoutFeedback,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
 } from "react-native";
 
-const DATA = [
-  {
-    id: "1",
-    title: "First Item",
-  },
-  {
-    id: "2",
-    title: "Second Item",
-  },
-  {
-    id: "3",
-    title: "Third Item",
-  },
-  {
-    id: "4",
-    title: "Fourth Item",
-  },
-  {
-    id: "5",
-    title: "five Item",
-  },
-  {
-    id: "6",
-    title: "sex Item",
-  },
-  {
-    id: "7",
-    title: "seven Item",
-  },
-  {
-    id: "8",
-    title: "eight Item",
-  },
-  {
-    id: "9",
-    title: "nine Item",
-  },
-  {
-    id: "10",
-    title: "ten Item",
-  },
-  {
-    id: "11",
-    title: "11 Item",
-  },
-  {
-    id: "12",
-    title: " 12 Item",
-  },
-]
-
 export default function App() {
-  const Hed = () => {
-    return (
-<<<<<<< HEAD
-      <View>
-        <View
-          style={{
-            marginTop: 50,
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <View style={{ flexDirection: "row" }}>
-            <Image
-              style={{ width: 50, height: 50, borderRadius: 100 }}
-              source={require("./assets/1.jpeg")}
-            />
-            <Text
-              style={{
-                fontSize: 26,
-                fontWeight: "400",
-                marginLeft: 20,
-                marginTop: 4,
-              }}
-            >
-              Hi ,Tariq !
-            </Text>
-          </View>
-          <Image
-            style={{ width: 25, height: 25, marginTop: 10 }}
-            source={require("./assets/bell.png")}
-          />
-        </View>
-        <View
-          style={{
-            borderRadius: 12,
-            marginTop: 40,
-            backgroundColor: "#F0F0F0",
-            alignItems: "center",
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 22,
-              fontWeight: "500",
-              marginTop: 4,
-              textAlign: "center",
-            }}
-          >
-            Let's start
-=======
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          width: width * 0.9,
-        }}
-      >
-        <TouchableOpacity style={[styles.touch, { width: width * 0.28 }]}>
-          <Text style={{ textAlign: "center", color: "#3C67AF" }}>Open</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.touch, { width: width * 0.28 }]}>
-          <Text style={{ textAlign: "center", color: "#3C67AF" }}>Edit</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.touch, { width: width * 0.28 }]}>
-          <Text style={{ textAlign: "center", color: "#3C67AF" }}>
-            Download
->>>>>>> 08bd8434ea8174840023c39a0a8394d592609359
-          </Text>
-          <Text
-            style={{
-              fontSize: 26,
-              fontWeight: "500",
-              textAlign: "center",
-            }}
-          >
-            CONSULTATION
-          </Text>
-          <TouchableOpacity
-            style={{
-              width: 170,
-              backgroundColor: "#3C67AF",
-              borderColor: "#3C67AE",
-              borderWidth: 1,
-              borderRadius: 15,
-              padding: 12,
-              marginVertical: 20,
-            }}
-          >
-            <Text style={{ textAlign: "center", fontSize: 18, color: "#FFF" }}>
-              Start
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <View
-          style={{
-            height: height * 0.08,
-            width: width * 0.9,
-            marginVertical: 30,
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Text style={{ fontSize: 26, fontWeight: "400" }}>
-            Last Documents
-          </Text>
-          <View style={{ flexDirection: "row", top: 2 }}>
-            <Text style={{ fontSize: 18 }}>View all</Text>
-            <Image
-              style={{ width: 20, height: 20, left: 3, top: 4 }}
-              source={require("./assets/arow.png")}
-            />
-          </View>
-        </View>
-      </View>
-    );
+  const onProcesshand = () => {
+    Keyboard.dismiss();
   };
-  const [modalVisible, setModalVisible] = useState(false);
-  const { width, height } = useWindowDimensions();
-  const Item = ({ title }) => (
-<<<<<<< HEAD
-    <View>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-          setModalVisible(!modalVisible);
-        }}
-      >
-        <View
-          style={{
-            backgroundColor: "#CCD5E3",
-            justifyContent: "center",
-            alignItems: "center",
-            width: width * 0.8,
-            top: height * 0.2,
-            height: height * 0.5,
-            left: width * 0.1,
-          }}
-        >
-          <Text
-            style={{ fontSize: 26, fontWeight: "400", textAlign: "center" }}
-          >
-            Hello World!{" \n"} Welcome{" \n"}
-          </Text>
-          <TouchableOpacity onPress={() => setModalVisible((modalVisible)=>!modalVisible)}>
-            <Text
+  return (
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "web" ? "padding" : "height"}
+      style={{ flex: 1, height: "100%" }}
+    >
+      <TouchableWithoutFeedback onPress={onProcesshand}>
+        <ScrollView>
+          <View>
+            {/* <Image source={require('./assets/favicon.png')}/> */}
+            {/* <Text>Open up App.js to start working on your app!</Text> */}
+            {/* <Compo title ="Hello " style={{width:'100%',height:500}} /> */}
+            <StatusBar style="auto" />
+            <ImageBackground
+              resizeMode="cover"
+              style={{ height: 200 }}
+              source={require("./assets/1.jpeg")}
+            ></ImageBackground>
+            <View
               style={{
-                fontSize: 26,
-                fontWeight: "400",
-                textAlign: "center",
-                borderWidth: 2,
-                borderColor: "#F0F0F0",
-                width: width * 0.4,
-                borderRadius: 15,
-                paddingVertical: 10,
-                backgroundColor: "#3C67AF",
+                width: 150,
+                top: -60,
+                left: 20,
+                alignItems: "center",
               }}
             >
-              Close Tab
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </Modal>
-      <Pressable
-        style={[styles.item, { width: width * 0.9 }]}
-        onPress={() => setModalVisible((modalVisible)=>!modalVisible)}
-      >
-        <View style={{ flexDirection: "row" }}>
-          <Image
-            style={{
-              width: 40,
-              height: 40,
-              marginLeft: 8,
-              marginTop: 5,
-            }}
-            source={require("./assets/document.png")}
-          />
-          <Text style={styles.title}>{title}</Text>
-        </View>
-        <Image
-          style={{ width: 30, height: 30, marginTop: 5 }}
-          source={require("./assets/dowload.png")}
-        />
-      </Pressable>
-=======
-    <View
-      style={{
-        paddingVertical: 20,
-        borderBottomColor: "#40404020",
-        borderBottomWidth: 1,
-      }}
-    >
-      <Text style={{ fontSize: 20, fontWeight: "600" }}>{title}</Text>
-      <View>
-        <Text style={{ fontSize: 18, paddingVertical: 18 }}>Conclusion</Text>
-        <Butt />
-      </View>
-      <View>
-        <Text style={{ fontSize: 18, paddingVertical: 18 }}>
-          Certificate of illness{" "}
-        </Text>
-        <Butt />
-      </View>
-      <View>
-        <Text style={{ fontSize: 18, paddingVertical: 18 }}>
-          Medication prescription{" "}
-        </Text>
-        <Butt />
-      </View>
->>>>>>> 08bd8434ea8174840023c39a0a8394d592609359
-    </View>
-  );
-  const renderItem = ({ item }) => <Item title={item.title} />;
-  return (
-<<<<<<< HEAD
-    // <ScrollView >
-=======
->>>>>>> 08bd8434ea8174840023c39a0a8394d592609359
-    <View
-      style={{
-        height: height,
-        alignItems: "center",
-        flexDirection: "column",
-        justifyContent: "flex-start",
-      }}
-    >
-      <View
-        style={{
-          height: height * 1,
-          alignItems: "center",
-          flexDirection: "column",
-          justifyContent: "flex-end",
-        }}
-      >
-        <StatusBar style="auto" />
-        {/* //Start header */}
-        {/* <View
-        style={{
-          width: width * 0.9,
-          marginTop: 50,
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
-        <View style={{ flexDirection: "row" }}>
-          <Image
-            style={{ width: 50, height: 50, borderRadius: 100 }}
-            source={require("./assets/1.jpeg")}
-          />
-          <Text
-            style={{
-              fontSize: 26,
-              fontWeight: "400",
-              marginLeft: 20,
-              marginTop: 4,
-            }}
-          >
-            Hi ,Tariq !
-          </Text>
-        </View>
-        <Image
-          style={{ width: 25, height: 25, marginTop: 10 }}
-          source={require("./assets/bell.png")}
-        />
-      </View>
-      <View
-        style={{
-          borderRadius: 12,
-          marginTop: 40,
-          backgroundColor: "#F0F0F0",
-          width: width * 0.9,
-          alignItems: "center",
-        }}
-      >
-        <Text
-          style={{
-            fontSize: 22,
-            fontWeight: "500",
-            marginTop: 4,
-            textAlign: "center",
-          }}
-        >
-          Let's start
-        </Text>
-        <Text
-          style={{
-            fontSize: 26,
-            fontWeight: "500",
-            textAlign: "center",
-          }}
-        >
-          CONSULTATION
-        </Text>
-        <TouchableOpacity
-          style={{
-            width: 170,
-            backgroundColor: "#3C67AF",
-            borderColor: "#3C67AE",
-            borderWidth: 1,
-            borderRadius: 15,
-            padding: 12,
-            marginVertical: 20,
-          }}
-        >
-          <Text style={{ textAlign: "center", fontSize: 18, color: "#FFF" }}>
-            Start
-          </Text>
-        </TouchableOpacity>
-      </View>
-      <View
-        style={{
-          // height: height * 0.08,
-          width: width * 0.9,
-          marginVertical: 30,
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <Text style={{ fontSize: 26, fontWeight: "400" }}>Last Documents</Text>
-        <View style={{ flexDirection: "row", top: 2 }}>
-          <Text style={{ fontSize: 18 }}>View all</Text>
-          <Image
-            style={{ width: 20, height: 20, left: 3, top: 4 }}
-            source={require("./assets/arow.png")}
-          />
-        </View>
-      </View> */}
-        {/* //End header */}
+              <Image
+                style={{
+                  width: 100,
+                  height: 100,
+                  borderRadius: 100,
+                  borderWidth: 5,
+                }}
+                resizeMode="contain"
+                source={require("./assets/1.jpeg")}
+              />
+              <Text
+                style={{
+                  fontSize: 22,
+                  fontWeight: "bold",
+                }}
+              >
+                Tariq Hijazi
+              </Text>
+              <TouchableOpacity
+                style={{
+                  backgroundColor: "#F0F0F0",
+                  borderColor: "#1B55A0",
+                  borderWidth: 1,
+                  borderRadius: 30,
+                  padding: 12,
+                  left: 220,
+                  bottom: 50,
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: 22,
+                    fontWeight: "bold",
+                  }}
+                >
+                  Edit Profile
+                </Text>
+              </TouchableOpacity>
+            </View>
 
-        {/* //Start list */}
-
-        <SafeAreaView
-          style={[
-            styles.container,
-            { width: width * 0.9, height: height * 0.88 },
-          ]}
-        >
-          <FlatList
-            ListHeaderComponent={<Hed />}
-            data={DATA}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id}
-          />
-        </SafeAreaView>
-        {/* //End list */}
-
-        {/* //Start Footer */}
-
-        <View
-          style={{
-            bottom: -20,
-            flexDirection: "row",
-            backgroundColor: "#161616",
-            width,
-            justifyContent: "space-between",
-          }}
-        >
-          <Image
-            style={{
-              width: 35,
-              height: 35,
-              marginHorizontal: width * 0.09,
-              marginVertical: 27,
-            }}
-            source={require("./assets/house-black-silhouette-without-door.png")}
-          />
-          <Image
-            style={{
-              width: 35,
-              height: 35,
-              marginHorizontal: width * 0.09,
-              marginVertical: 27,
-            }}
-            source={require("./assets/chat.png")}
-          />
-          <Image
-            style={{
-              width: 35,
-              height: 35,
-              marginHorizontal: width * 0.09,
-              marginVertical: 27,
-            }}
-            source={require("./assets/doccc.png")}
-          />
-          <Image
-            style={{
-              width: 35,
-              height: 35,
-              marginHorizontal: width * 0.09,
-              marginVertical: 27,
-            }}
-            source={require("./assets/login.png")}
-          />
-        </View>
-        {/* //End Footer */}
-      </View>
-    </View>
+            <View style={{ alignItems: "center" }}>
+              <View
+                style={{ width: 350, backgroundColor: "#CCD5E3", height: 200 }}
+              >
+                <ScrollView>
+                  <Text
+                    style={{
+                      fontSize: 25,
+                      color: "#000",
+                      textAlign: "center",
+                      padding: 20,
+                    }}
+                  >
+                    lorem-ipsum.line Lorem Ipsum is simply dummy text of the
+                    printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an
+                    unknown printer took a galley of type and scrambled it to
+                    make a type specimen book. It has survived not only five
+                    centuries, but also the leap into electronic typesetting,
+                    remaining essentially unchanged. It was popularised in the
+                    1960s with the release of Letraset sheets containing Lorem
+                    Ipsum passages, and more recently with desktop publishing
+                    software like Aldus PageMaker including versions of Lorem
+                    Ipsum
+                  </Text>
+                </ScrollView>
+              </View>
+              <View style={{ alignItems: "center", height: 300 }}>
+                <TextInput
+                  placeholder="User Name"
+                  keyboardType={"email-address"}
+                  style={{
+                    marginTop: 20,
+                    width: 300,
+                    height: 50,
+                    borderColor: "#000",
+                    borderWidth: 1,
+                    borderRadius: 15,
+                    textAlign: "left",
+                    paddingHorizontal: 15,
+                  }}
+                />
+                <TextInput
+                  secureTextEntry={true}
+                  placeholder="Password"
+                  style={{
+                    marginTop: 20,
+                    width: 300,
+                    height: 50,
+                    borderColor: "#000",
+                    borderWidth: 1,
+                    borderRadius: 15,
+                    textAlign: "left",
+                    paddingHorizontal: 15,
+                  }}
+                />
+                <TouchableOpacity
+                  style={{
+                    borderColor: "#1B55A0",
+                    borderWidth: 1,
+                    borderRadius: 20,
+                    padding: 12,
+                    left: 100,
+                    top: 20,
+                  }}
+                >
+                  <Text
+                    style={{
+                      fontSize: 22,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Submit
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </ScrollView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-<<<<<<< HEAD
-    // height: '88%',
-  },
-  item: {
-    padding: 10,
-    marginVertical: 10,
-    // marginHorizontal: 12,
-    borderWidth: 2,
-    borderRadius: 20,
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  title: {
-    fontSize: 32,
-    marginLeft: 10,
-=======
-    top: 15,
-    alignItems: "center",
-  },
-  touch: {
-    backgroundColor: "#F0F0F0",
-    borderRadius: 20,
-    paddingVertical: 15,
->>>>>>> 08bd8434ea8174840023c39a0a8394d592609359
-  },
-});
