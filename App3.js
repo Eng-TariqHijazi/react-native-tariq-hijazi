@@ -63,12 +63,11 @@ const DATA = [
     id: "12",
     title: " 12 Item",
   },
-]
+];
 
 export default function App() {
   const Hed = () => {
     return (
-<<<<<<< HEAD
       <View>
         <View
           style={{
@@ -116,24 +115,6 @@ export default function App() {
             }}
           >
             Let's start
-=======
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          width: width * 0.9,
-        }}
-      >
-        <TouchableOpacity style={[styles.touch, { width: width * 0.28 }]}>
-          <Text style={{ textAlign: "center", color: "#3C67AF" }}>Open</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.touch, { width: width * 0.28 }]}>
-          <Text style={{ textAlign: "center", color: "#3C67AF" }}>Edit</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.touch, { width: width * 0.28 }]}>
-          <Text style={{ textAlign: "center", color: "#3C67AF" }}>
-            Download
->>>>>>> 08bd8434ea8174840023c39a0a8394d592609359
           </Text>
           <Text
             style={{
@@ -187,10 +168,9 @@ export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
   const { width, height } = useWindowDimensions();
   const Item = ({ title }) => (
-<<<<<<< HEAD
     <View>
       <Modal
-        animationType="slide"
+        animationType="none"
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
@@ -214,7 +194,7 @@ export default function App() {
           >
             Hello World!{" \n"} Welcome{" \n"}
           </Text>
-          <TouchableOpacity onPress={() => setModalVisible((modalVisible)=>!modalVisible)}>
+          <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
             <Text
               style={{
                 fontSize: 26,
@@ -235,7 +215,7 @@ export default function App() {
       </Modal>
       <Pressable
         style={[styles.item, { width: width * 0.9 }]}
-        onPress={() => setModalVisible((modalVisible)=>!modalVisible)}
+        onPress={() => setModalVisible(true)}
       >
         <View style={{ flexDirection: "row" }}>
           <Image
@@ -254,40 +234,11 @@ export default function App() {
           source={require("./assets/dowload.png")}
         />
       </Pressable>
-=======
-    <View
-      style={{
-        paddingVertical: 20,
-        borderBottomColor: "#40404020",
-        borderBottomWidth: 1,
-      }}
-    >
-      <Text style={{ fontSize: 20, fontWeight: "600" }}>{title}</Text>
-      <View>
-        <Text style={{ fontSize: 18, paddingVertical: 18 }}>Conclusion</Text>
-        <Butt />
-      </View>
-      <View>
-        <Text style={{ fontSize: 18, paddingVertical: 18 }}>
-          Certificate of illness{" "}
-        </Text>
-        <Butt />
-      </View>
-      <View>
-        <Text style={{ fontSize: 18, paddingVertical: 18 }}>
-          Medication prescription{" "}
-        </Text>
-        <Butt />
-      </View>
->>>>>>> 08bd8434ea8174840023c39a0a8394d592609359
     </View>
   );
   const renderItem = ({ item }) => <Item title={item.title} />;
   return (
-<<<<<<< HEAD
     // <ScrollView >
-=======
->>>>>>> 08bd8434ea8174840023c39a0a8394d592609359
     <View
       style={{
         height: height,
@@ -473,7 +424,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-<<<<<<< HEAD
     // height: '88%',
   },
   item: {
@@ -488,14 +438,5 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     marginLeft: 10,
-=======
-    top: 15,
-    alignItems: "center",
-  },
-  touch: {
-    backgroundColor: "#F0F0F0",
-    borderRadius: 20,
-    paddingVertical: 15,
->>>>>>> 08bd8434ea8174840023c39a0a8394d592609359
   },
 });
